@@ -1,5 +1,5 @@
 {% set name = "slugid" %}
-{% set version = "0.2.24" %}
+{% set version = "2.0.0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/taskcluster/slugid.py.git
-  git_rev: {{ version }}
+  git_rev: "v{{ version }}"
 
 build:
   number: 0
@@ -17,9 +17,14 @@ requirements:
   host:
     - tox
     - twine
+    - python
+  run:
+    - python
 
 about:
   home: https://github.com/taskcluster/slugid.py
+  license: MPL 2.0
+  license_family: MOZILLA
   license_file: LICENSE
-  summary: Python NGS Repository
+  summary: URL-safe base64 UUID encoder for generating 22 character slugs
   dev_url: https://github.com/taskcluster/slugid.py
