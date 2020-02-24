@@ -1,0 +1,57 @@
+{% set name = "clodius" %}
+{% set version = "0.14.2" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_url: https://github.com/higlass/clodius.git
+  git_rev: {{ version }}
+
+build:
+  number: 0
+  entry_points:
+    - clodius=clodius.cli.aggregate:cli
+  script: "$PYTHON -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - numpy
+    - negspy
+    - pysam
+    - dask
+    - requests
+    - h5py
+    - pandas
+    - slugid
+    - sortedcontainers
+    - nose
+    - cooler>=0.8.5
+    - pybbi>=0.2.0
+    - Click>=7
+  run:
+    - numpy
+    - negspy
+    - pysam
+    - dask
+    - requests
+    - h5py
+    - pandas
+    - slugid
+    - sortedcontainers
+    - nose
+    - cooler>=0.8.5
+    - pybbi>=0.2.0
+    - Click>=7
+
+  commands:
+    - clodius --help
+
+about:
+  home: http://github.com/higlass/clodius/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Clodius is a tool for breaking up large data sets into smaller tiles that can subsequently be displayed using an appropriate viewer.
+  dev_url: http://github.com/higlass/clodius
