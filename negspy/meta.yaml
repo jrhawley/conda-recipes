@@ -1,5 +1,5 @@
 {% set name = "negspy" %}
-{% set version = "0.2.24" %}
+{% set version = "0.2.23" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/pkerpedjiev/negspy.git
-  git_rev: {{ version }}
+  git_rev: "v{{ version }}"
 
 build:
   number: 0
@@ -15,12 +15,13 @@ build:
 
 requirements:
   host:
+    - python
     - numpy
   run:
+    - python
     - numpy
 
 about:
   home: https://github.com/pkerpedjiev/negspy/
-  license_file: LICENSE
   summary: Python NGS Repository
   dev_url: https://github.com/pkerpedjiev/negspy/
