@@ -1,0 +1,40 @@
+{% set name = "pybbi" %}
+{% set version = "0.2.2" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_url: https://github.com/nvictus/pybbi.git
+  git_rev: "v{{ version }}"
+
+build:
+  number: 0
+  script: "$PYTHON -m pip install -e . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - python>=3.4
+    - pip
+    - pkgconfig
+    - numpy
+    - six
+    - cython
+    - libclang
+    - zlib
+    - libpng
+    - openssl
+    - make
+  run:
+    - numpy
+    - six
+    - cython
+
+about:
+  home: https://github.com/nvictus/pybbi
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Python bindings to UCSC BigWig and BigBed library
+  dev_url: https://github.com/nvictus/pybbi
