@@ -1,0 +1,32 @@
+{% set name = "python-frontmatter" %}
+{% set version = "0.5.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_url: https://github.com/eyeseast/python-frontmatter.git
+  git_rev: "v{{ version }}"
+
+build:
+  number: 0
+  script:
+    - "$PYTHON -m pip install -e . --no-deps --ignore-installed -vv " # [not win]
+    - "\"%PYTHON%\" -m pip install -e . --no-deps --ignore-installed -vv " # [win]
+
+requirements:
+  host:
+    - python>=3.4
+    - pip
+    - six
+    - toml
+    - pyyaml
+
+about:
+  home: https://github.com/eyeseast/python-frontmatter
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Parse and manage posts with YAML (or other) frontmatter
+  dev_url: https://github.com/eyeseast/python-frontmatter
