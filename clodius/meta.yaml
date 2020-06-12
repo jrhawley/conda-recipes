@@ -1,51 +1,58 @@
 {% set name = "clodius" %}
-{% set version = "0.14.2" %}
+{% set version = "0.14.3" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  git_url: https://github.com/higlass/clodius.git
-  git_rev: "v{{ version }}"
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 577067cb62b83d1d733e781677181098d00792838e18459b28a78add74e0d5ab
 
 build:
   number: 0
   entry_points:
-    - clodius=clodius.cli.aggregate:cli
-  script: "$PYTHON -m pip install . --no-deps --ignore-installed -vv "
+    - clodius = clodius.cli.aggregate:cli
+  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python
-    - numpy
-    - negspy
-    - pysam
+    - click >=7
+    - cooler >=0.8.5
     - dask
-    - requests
     - h5py
-    - pandas
-    - slugid
-    - sortedcontainers
+    - negspy
     - nose
-    - cooler>=0.8.5
-    - pybbi>=0.2.0
-    - Click>=7
-  run:
-    - python
     - numpy
-    - negspy
-    - pysam
-    - dask
-    - requests
-    - h5py
     - pandas
+    - pip
+    - pybbi >=0.2.0
+    - pysam
+    - python
+    - requests
     - slugid
     - sortedcontainers
-    - cooler>=0.8.5
-    - pybbi>=0.2.0
-    - Click>=7
+  run:
+    - click >=7
+    - cooler >=0.8.5
+    - dask
+    - h5py
+    - negspy
+    - nose
+    - numpy
+    - pandas
+    - pybbi >=0.2.0
+    - pysam
+    - python
+    - requests
+    - slugid
+    - sortedcontainers
 
+test:
+  imports:
+    - clodius
+    - clodius.cli
+    - clodius.tiles
   commands:
     - clodius --help
 
@@ -56,3 +63,7 @@ about:
   license_file: LICENSE
   summary: Clodius is a tool for breaking up large data sets into smaller tiles that can subsequently be displayed using an appropriate viewer.
   dev_url: http://github.com/higlass/clodius
+
+extra:
+  recipe-maintainers:
+    - jrhawley
