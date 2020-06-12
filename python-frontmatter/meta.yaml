@@ -6,27 +6,37 @@ package:
   version: "{{ version }}"
 
 source:
-  git_url: https://github.com/eyeseast/python-frontmatter.git
-  git_rev: "v{{ version }}"
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: a9c2e90fc38e9f0c68d8b82299040f331ca3b8525ac7fa5f6beffef52b26c426
 
 build:
   number: 0
-  script:
-    - "$PYTHON -m pip install -e . --no-deps --ignore-installed -vv " # [not win]
-    - "\"%PYTHON%\" -m pip install -e . --no-deps --ignore-installed -vv " # [win]
+  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python>=3.4
     - pip
-    - six
-    - toml
+    - python
     - pyyaml
+    - six
+  run:
+    - python
+    - pyyaml
+    - six
+
+test:
+  imports:
+    - frontmatter
 
 about:
-  home: https://github.com/eyeseast/python-frontmatter
+  home: "https://github.com/eyeseast/python-frontmatter"
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: Parse and manage posts with YAML (or other) frontmatter
-  dev_url: https://github.com/eyeseast/python-frontmatter
+  summary: "Parse and manage posts with YAML (or other) frontmatter"
+  doc_url: "https://python-frontmatter.readthedocs.io/en/latest/"
+  dev_url: "https://github.com/eyeseast/python-frontmatter"
+
+extra:
+  recipe-maintainers:
+    - jrhawley
