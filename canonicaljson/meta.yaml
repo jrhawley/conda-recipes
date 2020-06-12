@@ -1,0 +1,40 @@
+{% set name = "canonicaljson" %}
+{% set version = "1.1.4" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 45bce530ff5fd0ca93703f71bfb66de740a894a3b5dd6122398c6d8f18539725
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - frozendict >=1.0
+    - pip
+    - python
+    - simplejson >=3.6.5
+    - six
+  run:
+    - frozendict >=1.0
+    - python
+    - simplejson >=3.6.5
+    - six
+
+about:
+  home: "https://github.com/matrix-org/python-canonicaljson"
+  license: Apache Software
+  license_family: APACHE
+  license_file: 
+  summary: "Canonical JSON"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - your-github-id-here
