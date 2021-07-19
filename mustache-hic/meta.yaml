@@ -1,0 +1,58 @@
+{% set name = "mustache-hic" %}
+{% set version = "1.2.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 767436462ef1f43f28c41fb3363778359aa7852aa851c6ff891d49d16eb12122
+
+build:
+  number: 0
+  entry_points:
+    - mustache = mustache.mustache:main
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - cooler
+    - hic-straw
+    - numpy
+    - pandas
+    - pathlib
+    - pip
+    - python
+    - requests
+    - scipy
+    - statsmodels
+  run:
+    - cooler
+    - hic-straw
+    - numpy
+    - pandas
+    - pathlib
+    - python
+    - requests
+    - scipy
+    - statsmodels
+
+test:
+  imports:
+    - mustache
+  commands:
+    - mustache --help
+
+about:
+  home: "http://github.com/ay-lab/mustache/"
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "Mustache is a Hi-C analysis tool"
+  doc_url: "http://github.com/ay-lab/mustache/"
+  dev_url: "http://github.com/ay-lab/mustache/"
+
+extra:
+  recipe-maintainers:
+    - jrhawley
