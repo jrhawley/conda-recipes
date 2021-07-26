@@ -1,0 +1,49 @@
+{% set name = "TADLib" %}
+{% set version = "0.4.2.post1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://files.pythonhosted.org/packages/d6/0f/f664481180bbe18d7da9d13ac7598d56f1811a473ac61c4a114b4831b78e/{{ name }}-{{ version }}.tar.gz"
+  sha256: 70f260a3daa0fa0ab937d5aa04a466a94ae8f47e600c436225b7ee9b22592107
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+    - cooler
+    - matplotlib
+    - numpy
+    - scipy
+    - pomegranate
+    - scikit-learn
+
+test:
+  imports:
+    - tadlib
+    - tadlib.calfea
+    - tadlib.domaincaller
+    - tadlib.hitad
+    - tadlib.visualize
+
+about:
+  home: "https://github.com/XiaoTaoWang/TADLib/"
+  license: "GNU General Public v3 or later (GPLv3+)"
+  license_family: GPL3
+  license_file: 
+  summary: "A Library to Explore Chromatin Interaction Patterns for Topologically Associating Domains"
+  doc_url: "https://github.com/XiaoTaoWang/TADLib/"
+  dev_url: "https://github.com/XiaoTaoWang/TADLib/"
+
+extra:
+  recipe-maintainers:
+    - jrhawley
+
