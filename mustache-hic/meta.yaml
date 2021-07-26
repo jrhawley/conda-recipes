@@ -1,4 +1,5 @@
 {% set name = "mustache-hic" %}
+{% set name_score = name | lower | replace("-", "_") %}
 {% set version = "1.2.0" %}
 
 package:
@@ -6,7 +7,7 @@ package:
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  url: "https://files.pythonhosted.org/packages/ae/38/90ccb0745c1044257b34f1d2013a5a7fc341249ed95e900d7b1541f4ba18/{{ name_score }}-{{ version }}.tar.gz"
   sha256: 767436462ef1f43f28c41fb3363778359aa7852aa851c6ff891d49d16eb12122
 
 build:
@@ -48,7 +49,6 @@ about:
   home: "http://github.com/ay-lab/mustache/"
   license: MIT
   license_family: MIT
-  license_file: LICENSE
   summary: "Mustache is a Hi-C analysis tool"
   doc_url: "http://github.com/ay-lab/mustache/"
   dev_url: "http://github.com/ay-lab/mustache/"
