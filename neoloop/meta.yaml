@@ -1,0 +1,58 @@
+{% set name = "neoloop" %}
+{% set version = "0.2.3" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: adfb0d0c118a292af26b48ddf796eb6f358467a1629766f3a5b05bcff7e90871
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+    - rpy2=2.9.4
+    - r-base
+    - r-mgcv
+    - cooler
+    - joblib
+    - numpy
+    - scipy
+    - scikit-learn
+    - networkx
+    - coolbox
+    - pyensembl
+    - pyBigWig
+    - matplotlib
+    - pomegranate
+    - h5py
+    - pandas
+    - tadlib
+
+test:
+  imports:
+    - neoloop
+    - neoloop.cnv
+    - neoloop.pastis
+    - neoloop.tadtool
+    - neoloop.visualize
+
+about:
+  home: "https://github.com/XiaoTaoWang/NeoLoopFinder"
+  license: "https://raw.githubusercontent.com/XiaoTaoWang/NeoLoopFinder/master/LICENSE"
+  license_family: OTHER
+  license_file: LICENSE
+  summary: "Predict neo-loops induced by structural variations"
+  dev_url: "https://github.com/XiaoTaoWang/NeoLoopFinder"
+
+extra:
+  recipe-maintainers:
+    - jrhawley
