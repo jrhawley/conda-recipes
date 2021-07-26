@@ -1,5 +1,5 @@
 {% set name = "negspy" %}
-{% set version = "0.2.23" %}
+{% set version = "0.2.24" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/pkerpedjiev/negspy.git
-  git_rev: "v{{ version }}"
+  git_rev: "a3a0046170548ccac44aa5b09faf3bcc37d5ce39"
 
 build:
   number: 0
